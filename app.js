@@ -106,7 +106,7 @@ passport.deserializeUser(function (id, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://agile-island-00621.herokuapp.com/auth/google/tasks",
+    callbackURL: "https://lit-waters-24299.herokuapp.com/auth/google/tasks",
 },
     function (accessToken, refreshToken, profile, cb) {
         User.findOrCreate({ googleId: profile.id, email: profile._json.email, username: profile.displayName }, function (err, user) {
