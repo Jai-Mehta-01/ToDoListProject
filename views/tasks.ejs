@@ -1,0 +1,71 @@
+<% layout('layout/boilerplate') %>
+    <div class="container d-flex  row justify-content-center mb-3 ">
+        <div class="col-12 offset-1 text-center mt-3">
+
+            <% if(user.remainingTasks.length) {%>
+                <h3 class="mb-3">Remaining Tasks</h1>
+                    <!-- <h6 >Note-Add tasks in ascending order of </h6> -->
+
+                <%for(let task of user.remainingTasks){ %>
+                    <div class="d-flex list-group mb-2 shadow  mb-3 bg-white rounded row">
+
+                        <div class="container ms-auto me-auto text-center ">
+                            <h5 class="mb-1 " style="word-wrap:break-word;font-family: 'Cinzel', serif;">
+                                <%= task.task %>
+                            </h5>
+                            <% if(task.from){ %> 
+                            <small class="me-4 ">From-<%= task.from %> </small>
+                            <% } %>
+                            <% if(task.to){ %>  
+                            <small class=" ">To-<%= task.to %> </small><br>
+                            <% } %> 
+                            <% if(task.reminder){ %>
+                                <small>Reminder-<%= task.reminder %> </small>
+                                <% } %>
+                        </div>
+                        <div class="mt-2 mb-2  text-center">
+                            <small class="d-flex justify-content-center">
+                                <form class="me-2" action="/tasks/<%= task._id %>/deleteTask?_method=DELETE" method="post">
+                                    <button class="btn btn-success btn-sm">Task Done</button>
+                                </form>
+                                <form class="me-2 " action="/tasks/<%= task._id %>/removeTask?_method=DELETE" method="post">
+                                    <button class="btn btn-danger btn-sm">Remove Task</button>
+                                </form>
+                                <a href="/tasks/<%= task._id %> " class="btn btn-info btn-sm">Edit Task</a>
+                            </small>
+                        </div>
+
+                        </a>
+                    </div>
+
+
+                    <% } %>
+                        <% }else{ %>
+                            <p class="text-muted">No Tasks Remaining </p>
+                            <% } %>
+
+                                <a class="btn btn-primary mb-3 " href="/tasks/addTask">Add Task</a>
+                                <% if(user.doneTasks.length){ %>
+                                    <h3 class="mb-2 mt-5">Completed Tasks</h1>
+                                        
+                                        <% for(let task of user.doneTasks){ %>
+                                            <div class="list-group">
+                                                <div class="text-start mt-2 mb-2 list-group-item  " style="word-wrap:break-word;background-color: #4BB543; color: white;">
+                                                    <%= task.task %> 
+                                                </div>
+                                            </div>
+                                                
+                                            
+                                            <% } %>
+                                    <% } %>
+                                    <% if(user.remainingTasks.length || user.doneTasks.length){ %> 
+                                        <div class="">
+                                            <form action="/tasks/deleteAllTasks?_method=DELETE" method="post" >
+                                                <button class=" mt-4 btn btn-outline-danger">Make a new list of tasks!</button>
+                                            </form>
+                                        </div>
+                                        
+                                    <% } %> 
+        </div>
+
+    </div>

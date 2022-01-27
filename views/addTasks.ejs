@@ -1,0 +1,77 @@
+<% layout('layout/boilerplate') %>
+
+
+    <div class="container d-flex justify-content-center align-items-center mt-5 mb-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">Add a Task</h5>
+
+                        <form action="/tasks/addTask" method="POST" class="validation" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold" for="task">Task</label>
+                                <input class="form-control" type="text" id="task" placeholder="type your task"
+                                    name="task" autofocus required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold" for="from">From</label>
+                                <input class="form-control" type="time" id="from" name="from">
+
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold" for="to">To</label>
+                                <input class="form-control" type="time" id="to" name="to">
+
+                            </div>
+                            <div class="mb-3">
+
+
+                                <label class="form-label fw-bold" for="reminder">Set Reminder</label>
+                                <input class="form-control" type="time" id="reminder" name="reminder">
+                                <p class="text-muted fst-italic">
+                                    *The best way is to set the reminder once and precisely or don't set if unsure about the task, set it when you become sure about it by editing it!
+                                </p>
+                                <p class="text-muted fst-italic">*Don't set reminder for tasks you are unsure about
+                                    because even if you remove that task,
+                                    you will get a notification!</p>
+                                <p class="text-muted fst-italic">
+                                    *If you have already set a reminder and you want to change the reminder time, you
+                                    can but then you will recieve more than one notification!
+                                </p>
+                            </div>
+                            <button class="btn btn-success btn-block">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <h1></h1>
+    <form action="/tasks/addTask" method="post">
+        <div>
+            <label for="task">Task</label>
+            <input type="text" name="task" id="task">
+        </div>
+        <div>
+            <label for="from">From</label>
+            <input type="time" name="from" id="from">
+        </div>
+        <div>
+            <label for="to">To</label>
+            <input type="time" name="to" id="to">
+        </div>
+        <div>
+            <label for="reminder">Reminder</label>
+            <input type="time" name="reminder" id="reminder" class="form-control timepicker">
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form> -->
