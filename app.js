@@ -116,7 +116,6 @@ passport.use(new GoogleStrategy({
 ));
 
 
-// let timearr = [];
 app.use((req, res, next) => {
     if (!['/login', '/'].includes(req.originalUrl)) {
         req.session.returnTo = req.originalUrl;
@@ -130,9 +129,9 @@ app.use((req, res, next) => {
 
 app.use(async (req,res,next) =>
 {
-    console.log("I am email middleware");
+    // console.log("I am email middleware");
     const cuser = req.user;
-    console.log("I am cuser "+cuser);
+    // console.log("I am cuser "+cuser);
     if(cuser)
     {
         if(cuser.newAddedTask.reminder)
